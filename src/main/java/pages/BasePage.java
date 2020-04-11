@@ -25,7 +25,7 @@ public class BasePage {
      */
     public void visit(String url) {
         System.out.println("Navigating to: " + url);
-        if (!url.contains("http://the-internet.herokuapp.com/")) {
+        if (!url.contains("http")) {
             url = baseUrl + url;
         }
         System.out.println("<> " + url);

@@ -11,10 +11,11 @@ public class ImagesTests extends BaseTests {
 
     @Test
     public void validateImages(){
-        homePage = pages.getHomePage();
+        //homePage = pages.getHomePage();
+
         homePage.clickBrokenImage();
 
-        brokenImagesPage = pages.getBrokenImagesPage();
+        //brokenImagesPage = pages.getBrokenImagesPage();
         brokenImagesPage.VerifyImages();
 
     }
