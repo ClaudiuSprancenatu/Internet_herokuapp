@@ -1,17 +1,15 @@
 package pages;
 
-import org.openqa.selenium.By;
-
 public class HomePage {
-    private BasePage browser;
+    private BasePage driver;
 
-    public HomePage(BasePage browser){
-        this.browser = browser;
+    public HomePage(BasePage driver){
+        this.driver = driver;
     }
 
     public BrokenImagesPage clickBrokenImage(){
-        browser.clickLink("Broken Images");
-        return new BrokenImagesPage(browser);
+        driver.clickLink("Broken Images");
+        return new BrokenImagesPage(driver);
     }
 
 }

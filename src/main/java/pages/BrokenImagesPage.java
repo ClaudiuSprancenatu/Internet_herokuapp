@@ -2,13 +2,13 @@ package pages;
 
 public class BrokenImagesPage {
 
-    private BasePage browser;
+    private BasePage driver;
 
-    public BrokenImagesPage(BasePage browser){
-        this.browser = browser;
+    public BrokenImagesPage(BasePage driver){
+        this.driver = driver;
     }
 
     public void VerifyImages(){
-        browser.ImagestoCheck();
+        driver.ImagestoCheck();
     }
 }

@@ -1,7 +1,5 @@
 package pages;
 
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.DriverManager;
 import java.util.List;
 
 public class BasePage {
@@ -17,9 +16,10 @@ public class BasePage {
     private WebDriver driver;
     private Integer timeout = 10; // number of tries
     private String baseUrl = System.getProperty("baseUrl", "System baseUrl is not defined");
-    public BasePage(WebDriver browser){
-        this.driver = browser;
+    public BasePage(WebDriver driver){
+        this.driver = driver;
     }
+
 
     /**
      * Opens page
