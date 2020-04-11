@@ -9,14 +9,12 @@ import pages.HomePage;
 
 public class ImagesTests extends BaseTests {
 
-    private BasePage driver;
+    private HomePage homePage;
+    private BrokenImagesPage brokenImagesPage;
 
     @Test
     public void validateImages(){
-        HomePage homePage = new HomePage(driver);
-
         homePage.clickBrokenImage();
-        BrokenImagesPage brokenImagesPage = new BrokenImagesPage(driver);
         brokenImagesPage.VerifyImages();
     }
 }
