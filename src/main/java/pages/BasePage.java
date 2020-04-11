@@ -16,9 +16,7 @@ public class BasePage {
     private WebDriver driver;
     private Integer timeout = 10; // number of tries
     private String baseUrl = System.getProperty("baseUrl", "System baseUrl is not defined");
-    public BasePage(WebDriver driver){
-        this.driver = driver;
-    }
+    public BasePage(WebDriver driver){ this.driver = driver; }
 
 
     /**
