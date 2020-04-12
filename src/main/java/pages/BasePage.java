@@ -62,4 +62,8 @@ public class BasePage {
             }
         }
     }
+
+    public void getMessage(By selector){
+        driver.findElement(selector).getText();
+    }
 }

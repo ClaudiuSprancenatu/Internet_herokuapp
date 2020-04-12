@@ -7,17 +7,15 @@ import pages.BrokenImagesPage;
 import pages.HomePage;
 
 public class ImagesTests extends BaseTests {
-    private HomePage homePage;
+    //private HomePage homePage;
     private BasePage basePage;
     private BrokenImagesPage brokenImagesPage;
 
-    @Test
-    public void validateImages(){
-        //homePage = pages.getHomePage();
-        basePage.visit("http://the-internet.herokuapp.com/broken_images");
-        homePage.clickBrokenImage();
 
-        //brokenImagesPage = pages.getBrokenImagesPage();
+    @Test
+    public void validrateImages(){
+        brokenImagesPage = pages.getBrokenImagesPage();
+        //basePage.visit("http://the-internet.herokuapp.com/broken_images");
         brokenImagesPage.VerifyImages();
 
     }
