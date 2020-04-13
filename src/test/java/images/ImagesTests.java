@@ -15,8 +15,8 @@ public class ImagesTests extends BaseTests {
     @Test
     public void validrateImages(){
         brokenImagesPage = pages.getBrokenImagesPage();
-        //basePage.visit("http://the-internet.herokuapp.com/broken_images");
-        brokenImagesPage.VerifyImages();
+        brokenImagesPage.open();
+        brokenImagesPage.iVerifyImages();
 
     }
 }

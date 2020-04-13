@@ -42,8 +42,8 @@ public class BasePage {
         driver.findElement(By.linkText(text)).click();
     }
 
-    public void ImagestoCheck(){
-        List<WebElement> list = driver.findElements(By.tagName("img"));
+    public void theImagesAreLoadedProperly(By selector){
+        List<WebElement> list = driver.findElements(selector);
         System.out.println("Total number of Images on webpage are:...." + list.size());
 
         for(WebElement ele: list){

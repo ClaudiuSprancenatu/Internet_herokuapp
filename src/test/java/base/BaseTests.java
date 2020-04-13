@@ -15,12 +15,11 @@ public class BaseTests {
     public PageObjectManager pages;
 
 
-    @BeforeClass
+    @BeforeMethod
     public void SetUp(){
-        //System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","resources/chromedriver.exe");
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        driver.get("http://the-internet.herokuapp.com/broken_images");
         driver.manage().window().maximize();
         pages = new PageObjectManager(driver);
     }
