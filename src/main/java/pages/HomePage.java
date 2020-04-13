@@ -12,4 +12,9 @@ public class HomePage {
         return new BrokenImagesPage(driver);
     }
 
+    public CheckboxPages clickCheckBoxs(){
+        driver.clickLink("Checkboxes");
+        return new CheckboxPages(driver);
+    }
+
 }

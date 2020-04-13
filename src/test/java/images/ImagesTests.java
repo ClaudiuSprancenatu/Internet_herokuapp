@@ -5,11 +5,12 @@ import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.BrokenImagesPage;
 import pages.HomePage;
+import pages.PageObjectManager;
 
 public class ImagesTests extends BaseTests {
-    //private HomePage homePage;
     private BasePage basePage;
     private BrokenImagesPage brokenImagesPage;
+    private PageObjectManager pageObjectManager;
 
 
     @Test

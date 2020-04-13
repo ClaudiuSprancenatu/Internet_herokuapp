@@ -63,6 +63,21 @@ public class BasePage {
         }
     }
 
+    public void theCheckboxClick(By selector){
+        List<WebElement> list = driver.findElements(selector);
+
+        for(WebElement el : list){
+            System.out.println("The number of elements: " + el);
+        }
+        //int count = list.size();
+/*
+        if(is_selected == true) {
+            list.get(1).click();
+        }else {
+            list.get(0).click();
+        }*/
+    }
+
     public void getMessage(By selector){
         driver.findElement(selector).getText();
     }
