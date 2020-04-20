@@ -14,6 +14,6 @@ public class CheckboxPages {
         driver.theCheckboxClick(checkboxfind);
     }
     public void open(){
-        driver.visit("http://the-internet.herokuapp.com/broken_images");
+        driver.visit("http://the-internet.herokuapp.com/");
     }
 }

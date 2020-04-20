@@ -5,19 +5,19 @@ import org.openqa.selenium.By;
 public class BrokenImagesPage {
 
     private BasePage driver;
-    private By images = By.className(".example");
+    private By image = By.cssSelector(".example img");
 
     public BrokenImagesPage(BasePage driver){
-
         this.driver = driver;
     }
 
     public void iVerifyImages(){
-
-        driver.theImagesAreLoadedProperly(images);
+        driver.waitForThePageToBeLoaded();
+        driver.theImagesAreLoadedProperly(image);
     }
 
-    public void open(){
-        driver.visit("http://the-internet.herokuapp.com/broken_images");
+    public BrokenImagesPage open(){
+        driver.visit("/broken_images");
+        return this;
     }
 }
