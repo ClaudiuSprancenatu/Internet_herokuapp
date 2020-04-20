@@ -7,7 +7,8 @@ public class PageObjectManager {
     private BasePage basePage;
     private HomePage homePage;
     private BrokenImagesPage brokenImagesPage;
-    private CheckboxPages checkboxPages;
+    private LoginPage loginPage;
+    private SecureAreaPage secureAreaPage;
 
     public PageObjectManager(WebDriver driver){
         basePage = new BasePage(driver);
@@ -22,8 +23,12 @@ public class PageObjectManager {
         return (homePage == null) ? homePage = new HomePage(basePage) : homePage;
     }
 
-    public CheckboxPages getCheckBoxPages() {
-        return (checkboxPages == null) ? checkboxPages = new CheckboxPages(basePage) : checkboxPages;
+    public LoginPage getLoginPage() {
+        return (loginPage == null) ? loginPage = new LoginPage(basePage) : loginPage;
+    }
+
+    public SecureAreaPage getSecureAreaPage() {
+        return (secureAreaPage == null) ? secureAreaPage = new SecureAreaPage(basePage) : secureAreaPage;
     }
 
 }

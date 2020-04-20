@@ -43,6 +43,13 @@ public class BasePage {
         waitForThePageToBeLoaded();
         driver.findElement(By.linkText(text)).click();
     }
+
+    public void theLoginForm(By email, By pass, By selector){
+        driver.findElement(email).sendKeys("tomsmith");
+        driver.findElement(pass).sendKeys("SuperSecretPassword!");
+        driver.findElement(selector).click();
+    }
+
 /*
     public void waitUntilContainsText(By element, String text) {
         int i = 0;
@@ -109,22 +116,8 @@ public class BasePage {
         }
     }
 
-    public void theCheckboxClick(By selector){
-        List<WebElement> list = driver.findElements(selector);
+    public String getMessage(By selector){
 
-        for(WebElement el : list){
-            System.out.println("The number of elements: " + el);
-        }
-        //int count = list.size();
-/*
-        if(is_selected == true) {
-            list.get(1).click();
-        }else {
-            list.get(0).click();
-        }*/
-    }
-
-    public void getMessage(By selector){
-        driver.findElement(selector).getText();
+        return driver.findElement(selector).getText();
     }
 }

@@ -10,9 +10,9 @@ public class CheckboxPages {
         this.driver = driver;
     }
 
-    public void iVerifyCheckboxes(){
-        driver.theCheckboxClick(checkboxfind);
-    }
+    //public void iVerifyCheckboxes(){
+        //driver.theCheckboxClick(checkboxfind);
+    //}
     public void open(){
         driver.visit("http://the-internet.herokuapp.com/");
     }

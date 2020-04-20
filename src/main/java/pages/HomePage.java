@@ -17,4 +17,9 @@ public class HomePage {
         return new CheckboxPages(driver);
     }
 
+    public LoginPage clickFormAuthentication(){
+        driver.clickLink("Form Authentication");
+        return new LoginPage(driver);
+    }
+
 }
