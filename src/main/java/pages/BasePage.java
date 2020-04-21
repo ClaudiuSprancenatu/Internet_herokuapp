@@ -7,7 +7,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.DriverManager;
 import java.util.List;
 
 public class BasePage {
@@ -32,13 +31,6 @@ public class BasePage {
         driver.get(url);
     }
 
-    public void waitForThePageToBeLoaded() {
-        new WebDriverWait(driver, 5).until((ExpectedCondition<Boolean>) wd ->
-                ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
-       // new WebDriverWait(driver, timeout)
-         //       .until(ExpectedConditions.jsReturnsValue("return document.readyState == 'complete'"));
-    }
-
     public void clickLink(String text){
         waitForThePageToBeLoaded();
         driver.findElement(By.linkText(text)).click();
@@ -52,29 +44,42 @@ public class BasePage {
         }
     }
 
-    public WebElement waitUntilIsClickable(By element){
-        try {
-            waitFor(ExpectedConditions.elementToBeClickable(find(element)), timeout);
-        } catch (Exception e) {
+    public String getMessage(By selector){
 
-        }
-        return find(element);
+        return driver.findElement(selector).getText();
     }
 
-/*
-    public void waitUntilContainsText(By element, String text) {
-        int i = 0;
-        waitForElement(element);
-        while (i < timeout) {
-            String et = find(element).getText();
-            if (et.contains(text)) {
-                break;
+    public void typeIn(String text, By selector) {
+        waitUntilIsVisible(selector);
+        waitForThePageToBeLoaded();
+        find(selector).sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END));
+        find(selector).clear();
+        find(selector).sendKeys(text);
+    }
+
+    public void theImagesAreLoadedProperly(By img_selector){
+        waitForElement(img_selector);
+        List<WebElement> list = driver.findElements(img_selector);
+        System.out.println("Total number of Images on webpage are:...." + list.size());
+
+        for(WebElement ele: list){
+            try{
+                HttpURLConnection conn = (HttpURLConnection) new URL(ele.getAttribute("src")).openConnection();
+                conn.setRequestMethod("GET");
+                int respondeCode = conn.getResponseCode();
+                if(respondeCode != 200){
+                    System.out.println("Broken Image :....." + ele.getAttribute("src"));
+                }else{
+                    System.out.println("Good Image :....." + ele.getAttribute("src"));
+                }
+
+            }catch (Exception e){
+                System.out.println("No image found!");
+                e.printStackTrace();
             }
-            i++;
-            sleep(waitPerTry);
         }
     }
-*/
+
     public WebElement find(By selector) {
         waitForThePageToBeLoaded();
         WebElement node;
@@ -86,11 +91,29 @@ public class BasePage {
         }
         return node;
     }
+
     public void sleep(Integer miliseconds) {
         try {
             Thread.sleep(miliseconds);
         } catch (InterruptedException in) {
         }
+    }
+
+    // WAITS METHODS
+
+    public void waitForThePageToBeLoaded() {
+        new WebDriverWait(driver, 5).until((ExpectedCondition<Boolean>) wd ->
+                ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
+    }
+
+
+    public WebElement waitUntilIsClickable(By element){
+        try {
+            waitFor(ExpectedConditions.elementToBeClickable(find(element)), timeout);
+        } catch (Exception e) {
+
+        }
+        return find(element);
     }
 
     public WebElement waitForElement(By selector) {
@@ -104,48 +127,8 @@ public class BasePage {
         wait.until(condition);
     }
 
-    public void theImagesAreLoadedProperly(By img_selector){
-        waitForElement(img_selector);
-        List<WebElement> list = driver.findElements(img_selector);
-        System.out.println("Total number of Images on webpage are:...." + list.size());
-
-        for(WebElement ele: list){
-            try{
-            HttpURLConnection conn = (HttpURLConnection) new URL(ele.getAttribute("src")).openConnection();
-            conn.setRequestMethod("GET");
-            int respondeCode = conn.getResponseCode();
-            if(respondeCode != 200){
-                System.out.println("Broken Image :....." + ele.getAttribute("src"));
-            }else{
-                System.out.println("Good Image :....." + ele.getAttribute("src"));
-            }
-
-            }catch (Exception e){
-                System.out.println("No image found!");
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public String getMessage(By selector){
-
-        return driver.findElement(selector).getText();
-    }
-
-    public void typeIn(String text, By selector) {
-//        waitForThePageToBeLoaded();
-        waitUntilIsVisible(selector);
-        waitForThePageToBeLoaded();
-        find(selector).sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END));
-        find(selector).clear();
-        find(selector).sendKeys(text);
-//        jsType(text, extractSelector(selector));
-    }
-
     public WebElement waitUntilIsVisible(By selector) {
         // TODO - to do some more testing
-//        waitFor(ExpectedConditions.visibilityOfElementLocated(selector), 10);
-//        return find(selector);
 
         Integer i = 0;
         WebElement node;
