@@ -11,7 +11,8 @@ public class SecureAreaPage {
         this.browser = browser;
     }
 
-    public void getsuccesfulLogin(){
-        browser.getMessage(loginmessage);
+    public String getsuccesfulLogin(){
+        return browser.getMessage(loginmessage);
     }
 }
+

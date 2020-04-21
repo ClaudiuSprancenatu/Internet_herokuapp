@@ -44,10 +44,21 @@ public class BasePage {
         driver.findElement(By.linkText(text)).click();
     }
 
-    public void theLoginForm(By email, By pass, By selector){
-        driver.findElement(email).sendKeys("tomsmith");
-        driver.findElement(pass).sendKeys("SuperSecretPassword!");
-        driver.findElement(selector).click();
+    public void click(By selector) {
+        try {
+            waitUntilIsClickable(selector).click();
+        } catch (StaleElementReferenceException s) {
+            find(selector).click();
+        }
+    }
+
+    public WebElement waitUntilIsClickable(By element){
+        try {
+            waitFor(ExpectedConditions.elementToBeClickable(find(element)), timeout);
+        } catch (Exception e) {
+
+        }
+        return find(element);
     }
 
 /*
@@ -120,4 +131,43 @@ public class BasePage {
 
         return driver.findElement(selector).getText();
     }
+
+    public void typeIn(String text, By selector) {
+//        waitForThePageToBeLoaded();
+        waitUntilIsVisible(selector);
+        waitForThePageToBeLoaded();
+        find(selector).sendKeys(Keys.HOME,Keys.chord(Keys.SHIFT,Keys.END));
+        find(selector).clear();
+        find(selector).sendKeys(text);
+//        jsType(text, extractSelector(selector));
+    }
+
+    public WebElement waitUntilIsVisible(By selector) {
+        // TODO - to do some more testing
+//        waitFor(ExpectedConditions.visibilityOfElementLocated(selector), 10);
+//        return find(selector);
+
+        Integer i = 0;
+        WebElement node;
+        String stacktrace = null;
+        while (i < timeout) {
+            try {
+                node = find(selector);
+            } catch (Exception e) {
+                node = null;
+                stacktrace = e.getMessage();
+                i++;
+                sleep(waitPerTry);
+            }
+            if (node != null) {
+                if (node.isDisplayed()) {
+                    return node;
+                }
+            }
+        }
+
+        throw new NoSuchElementException(String.format("Element %s not found or not visible until %d seconds passed!",
+                selector, timeout) + "\r\n" + stacktrace);
+    }
+
 }

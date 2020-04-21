@@ -36,6 +36,7 @@ public class ImagesTests extends BaseTests {
         loginPage
                 .open()
                 .iLogin();
-
+        assertTrue(secureAreaPage.getsuccesfulLogin().contains("You logged into a secure area!"), "Alert text is incorrect");
+        System.out.println("end test");
     }
 }

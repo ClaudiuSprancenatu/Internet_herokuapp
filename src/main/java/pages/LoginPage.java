@@ -18,7 +18,9 @@ public class LoginPage {
     }
 
     public void iLogin(){
-        browser.theLoginForm(emailform,passform,buttonform);
+        browser.typeIn("tomsmith", emailform);
+        browser.typeIn("SuperSecretPassword!", passform);
+        browser.click(buttonform);
     }
 
 }
