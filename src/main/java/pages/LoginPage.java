@@ -18,19 +18,11 @@ public class LoginPage {
         return this;
     }
 
-    public void iSuccessfullyLogin(){
-        LoginFrom("tomsmith", "SuperSecretPassword!");
-    }
-
-    public void iUnssucessfllyLogin(){
-        LoginFrom("sprancenatuc@yahoo.com", "123456");
-    }
-
     public void iLogout(){
         browser.click(buttonLogout);
     }
 
-    private void LoginFrom(String email, String pass){
+    public void LoginFrom(String email, String pass){
         browser.typeIn(email, emailform);
         browser.typeIn(pass, passform);
         browser.click(buttonLogin);

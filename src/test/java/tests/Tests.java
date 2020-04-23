@@ -37,27 +37,20 @@ public class Tests extends BaseTests {
     public void testSuccessfullyLogin() {
         loginPage
                 .open()
-                .iSuccessfullyLogin();
+                .LoginFrom("tomsmith", "SuperSecretPassword!");
         assertTrue(secureAreaPage.getLoginStatus().contains("You logged into a secure area!"), "Alert text is incorrect!");
         System.out.println("Successfully Login test is done!");
+        loginPage.iLogout();
+        assertTrue(secureAreaPage.getLoginStatus().contains("You logged out of the secure area!"), "Alert text is incorrect!");
+        System.out.println("Logout test is done!");
     }
 
     @Test
     public void testUnssucessfullyLogin() {
         loginPage
                 .open()
-                .iUnssucessfllyLogin();
+                .LoginFrom("sprancenatuc@yahoo.com", "12345");
         assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
         System.out.println("Unsuccessfully Login test is done!");
-    }
-
-    @Test
-    public void testLogOut(){
-        loginPage
-                .open()
-                .iSuccessfullyLogin();
-        loginPage.iLogout();
-        assertTrue(secureAreaPage.getLoginStatus().contains("You logged out of the secure area!"), "Alert text is incorrect!");
-        System.out.println("Logout test is done!");
     }
 }
