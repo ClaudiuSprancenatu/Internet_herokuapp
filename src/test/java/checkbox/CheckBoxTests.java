@@ -14,9 +14,7 @@ public class CheckBoxTests extends BaseTests {
 
     @Test
     public void testCheckBoxes(){
-        //checkboxPages = pages.getCheckBoxPages();
         checkboxPages.open();
         homePage.clickCheckBoxs();
-       // checkboxPages.iVerifyCheckboxes();
     }
 }

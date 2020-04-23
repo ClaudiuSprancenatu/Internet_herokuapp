@@ -23,7 +23,7 @@ public class Tests extends BaseTests {
     }
 
 
-    @Test
+    @Test(priority = 3)
     public void validrateImages() {
         brokenImagesPage
                 .open()
@@ -33,7 +33,7 @@ public class Tests extends BaseTests {
     }
 
 
-    @Test
+    @Test(priority = 1)
     public void testSuccessfullyLogin() {
         loginPage
                 .open()
@@ -45,7 +45,7 @@ public class Tests extends BaseTests {
         System.out.println("Logout test is done!");
     }
 
-    @Test
+    @Test(priority = 2)
     public void testUnssucessfullyLogin() {
         loginPage
                 .open()
