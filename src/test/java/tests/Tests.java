@@ -23,7 +23,7 @@ public class Tests extends BaseTests {
     }
 
 
-    @Test(priority = 3)
+    @Test(priority = 4)
     public void validrateImages() {
         brokenImagesPage
                 .open()
@@ -46,11 +46,20 @@ public class Tests extends BaseTests {
     }
 
     @Test(priority = 2)
-    public void testUnssucessfullyLogin() {
+    public void testInvalidUsername() {
         loginPage
                 .open()
                 .LoginFrom("sprancenatuc@yahoo.com", "12345");
         assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
+        System.out.println("Unsuccessfully Login test is done!");
+    }
+
+    @Test(priority = 3)
+    public void testInvalidPassword() {
+        loginPage
+                .open()
+                .LoginFrom("tomsmith", "12345");
+        assertTrue(secureAreaPage.getLoginStatus().contains("Your password is invalid!"), "Alert text is incorrect!");
         System.out.println("Unsuccessfully Login test is done!");
     }
 }

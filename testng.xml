@@ -11,8 +11,9 @@
             <class name="tests.Tests">
                 <methods>
                     <include name="validrateImages"/>
+                    <include name="testInvalidUsername"/>
+                    <include name="testInvalidPassword"/>
                     <include name="testSuccessfullyLogin"/>
-                    <include name="testUnssucessfullyLogin"/>
                 </methods>
             </class>
         </classes>
