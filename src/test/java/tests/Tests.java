@@ -49,7 +49,7 @@ public class Tests extends BaseTests {
     public void testInvalidUsername() {
         loginPage
                 .open()
-                .LoginFrom("sprancenatuc@yahoo.com", "12345");
+                .LoginFrom("sprancenatuc@yahoo.com", "SuperSecretPassword!");
         assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
         System.out.println("Unsuccessfully Login test is done!");
     }
