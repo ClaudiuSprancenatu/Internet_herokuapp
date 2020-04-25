@@ -9,6 +9,7 @@ public class PageObjectManager {
     private BrokenImagesPage brokenImagesPage;
     private LoginPage loginPage;
     private SecureAreaPage secureAreaPage;
+    private CheckboxPages checkboxPages;
 
     public PageObjectManager(WebDriver driver){
         basePage = new BasePage(driver);
@@ -29,6 +30,10 @@ public class PageObjectManager {
 
     public SecureAreaPage getSecureAreaPage() {
         return (secureAreaPage == null) ? secureAreaPage = new SecureAreaPage(basePage) : secureAreaPage;
+    }
+
+    public CheckboxPages getCheckboxPages(){
+        return (checkboxPages == null) ? checkboxPages = new CheckboxPages(basePage) : checkboxPages;
     }
 
 }

@@ -3,17 +3,19 @@ package pages;
 import org.openqa.selenium.By;
 
 public class CheckboxPages {
-    private BasePage driver;
-    private By checkboxfind = By.id("checkboxes");
+    private BasePage browser;
+    private By checkboxfind = By.cssSelector("#checkboxes input");
 
-    public CheckboxPages(BasePage driver){
-        this.driver = driver;
+    public CheckboxPages(BasePage browser){
+        this.browser = browser;
     }
 
-    //public void iVerifyCheckboxes(){
-        //driver.theCheckboxClick(checkboxfind);
-    //}
     public void open(){
-        driver.visit("http://the-internet.herokuapp.com/");
+
+        browser.visit("/checkboxes");
+    }
+
+    public void iVerifyCheckboxes(){
+        browser.theCheckboxClick(checkboxfind);
     }
 }

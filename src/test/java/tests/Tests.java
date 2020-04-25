@@ -4,6 +4,7 @@ import base.BaseTests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.BrokenImagesPage;
+import pages.CheckboxPages;
 import pages.LoginPage;
 import pages.SecureAreaPage;
 
@@ -13,6 +14,7 @@ public class Tests extends BaseTests {
     private BrokenImagesPage brokenImagesPage;
     private LoginPage loginPage;
     private SecureAreaPage secureAreaPage;
+    private CheckboxPages checkboxPages;
 
 
     @BeforeMethod
@@ -20,6 +22,7 @@ public class Tests extends BaseTests {
         brokenImagesPage = pages.getBrokenImagesPage();
         loginPage = pages.getLoginPage();
         secureAreaPage = pages.getSecureAreaPage();
+        checkboxPages = pages.getCheckboxPages();
     }
 
 
@@ -30,6 +33,13 @@ public class Tests extends BaseTests {
                 .iVerifyImages();
 
         System.out.println("end test");
+    }
+
+    @Test(priority = 6)
+    public void testCheckboxes(){
+        checkboxPages.open();
+        checkboxPages.iVerifyCheckboxes();
+        System.out.println("The checkboxes test is done!");
     }
 
 

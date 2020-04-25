@@ -3,17 +3,14 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="D:/Personale/TestAutomation/Internet_herokuapp">
         <classes>
-            <class name="checkbox.CheckBoxTests">
-                <methods>
-                    <include name="testCheckBoxes"/>
-                </methods>
-            </class>
             <class name="tests.Tests">
                 <methods>
                     <include name="validrateImages"/>
                     <include name="testInvalidUsername"/>
                     <include name="testInvalidPassword"/>
                     <include name="testSuccessfullyLogin"/>
+                    <include name="testEmptyForm"/>
+                    <include name="testCheckboxes"/>
                 </methods>
             </class>
         </classes>
