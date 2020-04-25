@@ -102,6 +102,7 @@ public class BasePage {
     public String selectCheckbox(By selector){
         Boolean isChecked = false;
         List<WebElement> checkboxes = driver.findElements(selector);
+
         int size = checkboxes.size();
         System.out.println("The size of list is: " + size);
 
@@ -130,6 +131,8 @@ public class BasePage {
 
         return null;
     }
+
+    //public void
 
     // WAITS METHODS
 
