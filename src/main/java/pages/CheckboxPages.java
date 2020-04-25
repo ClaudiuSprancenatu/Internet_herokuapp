@@ -15,7 +15,11 @@ public class CheckboxPages {
         browser.visit("/checkboxes");
     }
 
-    public void iVerifyCheckboxes(){
-        browser.theCheckboxClick(checkboxfind);
+    public void iCheckCheckboxes(){
+        browser.selectCheckbox(checkboxfind);
+    }
+
+    public void iUnheckCheckboxes(){
+        browser.deSelectCheckbox(checkboxfind);
     }
 }

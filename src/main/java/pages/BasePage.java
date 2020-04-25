@@ -99,7 +99,7 @@ public class BasePage {
         }
     }
 
-    public String theCheckboxClick(By selector){
+    public String selectCheckbox(By selector){
         Boolean isChecked = false;
         List<WebElement> checkboxes = driver.findElements(selector);
         int size = checkboxes.size();
@@ -110,6 +110,19 @@ public class BasePage {
             if(isChecked == false){
                 checkboxes.get(i).click();
             }
+        }
+
+        return null;
+    }
+
+    public String deSelectCheckbox(By selector){
+        Boolean isChecked = false;
+        List<WebElement> checkboxes = driver.findElements(selector);
+        int size = checkboxes.size();
+        System.out.println("The size of list is: " + size);
+
+        for (int i=0; i<size; i++){
+            isChecked = checkboxes.get(i).isSelected();
             if(isChecked == true){
                 checkboxes.get(i).click();
             }

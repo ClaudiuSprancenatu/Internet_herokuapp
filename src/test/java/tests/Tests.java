@@ -36,10 +36,17 @@ public class Tests extends BaseTests {
     }
 
     @Test(priority = 6)
-    public void testCheckboxes(){
+    public void testCheckCheckboxes(){
         checkboxPages.open();
-        checkboxPages.iVerifyCheckboxes();
-        System.out.println("The checkboxes test is done!");
+        checkboxPages.iCheckCheckboxes();
+        System.out.println("The checkboxes are selected!");
+    }
+
+    @Test(priority = 7)
+    public void testUncheckCheckboxes(){
+        checkboxPages.open();
+        checkboxPages.iUnheckCheckboxes();
+        System.out.println("The checkboxes are deselect!");
     }
 
 
