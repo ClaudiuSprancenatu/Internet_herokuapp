@@ -2,6 +2,7 @@ package tests;
 
 import base.BaseTests;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import pages.BrokenImagesPage;
 import pages.CheckboxPages;
@@ -50,7 +51,7 @@ public class Tests extends BaseTests {
     }
 
 
-    @Test(priority = 1)
+    @Test(priority = 8)
     public void testSuccessfullyLogin() {
         loginPage
                 .open()
@@ -60,6 +61,29 @@ public class Tests extends BaseTests {
         loginPage.iLogout();
         assertTrue(secureAreaPage.getLoginStatus().contains("You logged out of the secure area!"), "Alert text is incorrect!");
         System.out.println("Logout test is done!");
+    }
+
+    @Test(dataProvider = "LoginDataProvider", dataProviderClass = CustomerDataProvider.class)
+    public void loginTest(String email, String pass){
+        loginPage
+                .open()
+                .LoginFrom(email,pass);
+
+        assertTrue(secureAreaPage.getLoginStatus().contains("You logged into a secure area!"), "Alert text is incorrect!");
+        System.out.println("Successfully Login test is done!");
+
+        loginPage.iLogout();
+        assertTrue(secureAreaPage.getLoginStatus().contains("You logged out of the secure area!"), "Alert text is incorrect!");
+        System.out.println("Logout test is done!");
+
+        loginPage.LoginFrom(email,pass);
+        assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
+        System.out.println("Unsuccessfully Login test is done!");
+
+        loginPage.LoginFrom(email,pass);
+        assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
+        System.out.println("Unsuccessfully Login test is done!");
+
     }
 
     @Test(priority = 2)

@@ -12,6 +12,7 @@ public class SecureAreaPage {
     }
 
     public String getLoginStatus(){
+        browser.waitForElement(loginMessage);
         return browser.getMessage(loginMessage);
     }
 }

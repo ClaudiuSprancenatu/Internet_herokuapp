@@ -11,6 +11,7 @@
                     <include name="testSuccessfullyLogin"/>
                     <include name="testEmptyForm"/>
                     <include name="testCheckboxes"/>
+                    <include name="loginTest"/>
                 </methods>
             </class>
         </classes>
