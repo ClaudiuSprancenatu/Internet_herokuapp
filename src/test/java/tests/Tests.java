@@ -63,28 +63,36 @@ public class Tests extends BaseTests {
         System.out.println("Logout test is done!");
     }
 
-    @Test(dataProvider = "LoginDataProvider", dataProviderClass = CustomerDataProvider.class)
-    public void loginTest(String email, String pass){
-        loginPage
-                .open()
-                .LoginFrom(email,pass);
+    @Test(dataProvider = "SuccessfulLogin", dataProviderClass = CustomerDataProvider.class)
+    public void SuccessfulLogin(String email, String pass){
+        loginPage.open().LoginFrom(email,pass);
+        System.out.println("Email:" + email + "Password" + pass);
 
+        //Verify successful Login
         assertTrue(secureAreaPage.getLoginStatus().contains("You logged into a secure area!"), "Alert text is incorrect!");
         System.out.println("Successfully Login test is done!");
 
+        //Logout
         loginPage.iLogout();
         assertTrue(secureAreaPage.getLoginStatus().contains("You logged out of the secure area!"), "Alert text is incorrect!");
         System.out.println("Logout test is done!");
 
-        loginPage.LoginFrom(email,pass);
-        assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
-        System.out.println("Unsuccessfully Login test is done!");
-
-        loginPage.LoginFrom(email,pass);
-        assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
-        System.out.println("Unsuccessfully Login test is done!");
 
     }
+
+    @Test(dataProvider = "UnsuccessfulLogin", dataProviderClass = CustomerDataProvider.class)
+    public void UnsuccessfulLogin(String email, String pass){
+        loginPage.open().LoginFrom(email,pass);
+        System.out.println("Email:" + email + "Password" + pass);
+
+        //Verify Unsuccessful Login
+        assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
+        System.out.println("Unsuccessfully Login test is done!");
+
+
+    }
+
+
 
     @Test(priority = 2)
     public void testInvalidUsername() {
