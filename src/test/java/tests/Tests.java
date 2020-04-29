@@ -27,7 +27,7 @@ public class Tests extends BaseTests {
     }
 
 
-    @Test(priority = 5)
+    @Test(priority = 3)
     public void validrateImages() {
         brokenImagesPage
                 .open()
@@ -36,20 +36,20 @@ public class Tests extends BaseTests {
         System.out.println("end test");
     }
 
-    @Test(priority = 6)
+    @Test(priority = 4)
     public void testCheckCheckboxes(){
         checkboxPages.open();
         checkboxPages.iCheckCheckboxes();
         System.out.println("The checkboxes are selected!");
     }
 
-    @Test(priority = 7)
+    @Test(priority = 5)
     public void testUncheckCheckboxes(){
         checkboxPages.open();
         checkboxPages.iUnheckCheckboxes();
         System.out.println("The checkboxes are deselect!");
     }
-
+/*
 
     @Test(priority = 8)
     public void testSuccessfullyLogin() {
@@ -61,9 +61,9 @@ public class Tests extends BaseTests {
         loginPage.iLogout();
         assertTrue(secureAreaPage.getLoginStatus().contains("You logged out of the secure area!"), "Alert text is incorrect!");
         System.out.println("Logout test is done!");
-    }
+    }*/
 
-    @Test(dataProvider = "SuccessfulLogin", dataProviderClass = CustomerDataProvider.class)
+    @Test(dataProvider = "SuccessfulLogin", dataProviderClass = CustomerDataProvider.class, priority = 1)
     public void SuccessfulLogin(String email, String pass){
         loginPage.open().LoginFrom(email,pass);
         System.out.println("Email:" + email + "Password" + pass);
@@ -80,7 +80,7 @@ public class Tests extends BaseTests {
 
     }
 
-    @Test(dataProvider = "UnsuccessfulLogin", dataProviderClass = CustomerDataProvider.class)
+    @Test(dataProvider = "UnsuccessfulLogin", dataProviderClass = CustomerDataProvider.class, priority = 2)
     public void UnsuccessfulLogin(String email, String pass, String invalid){
         loginPage.open().LoginFrom(email,pass);
         System.out.println("Email:" + email + "Password" + pass);
@@ -92,7 +92,7 @@ public class Tests extends BaseTests {
     }
 
 
-
+/*
     @Test(priority = 2)
     public void testInvalidUsername() {
         loginPage
@@ -118,5 +118,5 @@ public class Tests extends BaseTests {
                 .LoginFrom("", "");
         assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
         System.out.println("Unsuccessfully Login test is done!");
-    }
+    }*/
 }

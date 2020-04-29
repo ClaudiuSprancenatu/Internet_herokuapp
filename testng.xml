@@ -6,12 +6,10 @@
             <class name="tests.Tests">
                 <methods>
                     <include name="validrateImages"/>
-                    <include name="testInvalidUsername"/>
-                    <include name="testInvalidPassword"/>
-                    <include name="testSuccessfullyLogin"/>
-                    <include name="testEmptyForm"/>
-                    <include name="testCheckboxes"/>
-                    <include name="loginTest"/>
+                    <include name="testCheckCheckboxes"/>
+                    <include name="testUncheckCheckboxes"/>
+                    <include name="UnsuccessfulLogin"/>
+                    <include name="SuccessfulLogin"/>
                 </methods>
             </class>
         </classes>
