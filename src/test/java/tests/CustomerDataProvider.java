@@ -12,7 +12,7 @@ public class CustomerDataProvider {
 
     @DataProvider(name="UnsuccessfulLogin")
     public Object [] [] testInvalidLogin(){
-        Object [] [] data = { {"sprancenatuc@yahoo.com","SuperSecretPassword!"},{"tomsmith","12345"}};
+        Object [] [] data = { {"sprancenatuc@yahoo.com","SuperSecretPassword!", "Your username is invalid!"},{"tomsmith","12345", "Your password is invalid!"}};
         return data;
     }
 }

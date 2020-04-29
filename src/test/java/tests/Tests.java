@@ -81,14 +81,13 @@ public class Tests extends BaseTests {
     }
 
     @Test(dataProvider = "UnsuccessfulLogin", dataProviderClass = CustomerDataProvider.class)
-    public void UnsuccessfulLogin(String email, String pass){
+    public void UnsuccessfulLogin(String email, String pass, String invalid){
         loginPage.open().LoginFrom(email,pass);
         System.out.println("Email:" + email + "Password" + pass);
 
         //Verify Unsuccessful Login
-        assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
+        assertTrue(secureAreaPage.getLoginStatus().contains(invalid), "Alert text is incorrect!");
         System.out.println("Unsuccessfully Login test is done!");
-
 
     }
 
