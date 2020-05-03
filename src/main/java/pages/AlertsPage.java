@@ -49,8 +49,4 @@ public class AlertsPage {
     public String getResult(){
         return browser.getMessage(result);
     }
-
-    public String getAlertText(){
-        return browser.alert_getText();
-    }
 }
