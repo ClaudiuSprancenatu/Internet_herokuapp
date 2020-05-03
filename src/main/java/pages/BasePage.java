@@ -132,7 +132,25 @@ public class BasePage {
         return null;
     }
 
-    //public void
+    public void pressButton(By selector){
+        driver.findElement(selector).click();
+    }
+
+    public void alert_clickToAccept(){
+        driver.switchTo().alert().accept();
+    }
+
+    public void alert_clickToDismiss(){
+        driver.switchTo().alert().dismiss();
+    }
+
+    public void alert_setInput(String text){
+        driver.switchTo().alert().sendKeys(text);
+    }
+
+    public String alert_getText(){
+        return driver.switchTo().alert().getText();
+    }
 
     // WAITS METHODS
 

@@ -10,6 +10,7 @@
                     <include name="testUncheckCheckboxes"/>
                     <include name="UnsuccessfulLogin"/>
                     <include name="SuccessfulLogin"/>
+                    <include name="testAlerts"/>
                 </methods>
             </class>
         </classes>

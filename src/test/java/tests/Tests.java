@@ -4,10 +4,7 @@ import base.BaseTests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.BrokenImagesPage;
-import pages.CheckboxPages;
-import pages.LoginPage;
-import pages.SecureAreaPage;
+import pages.*;
 
 import static org.testng.Assert.assertTrue;
 
@@ -16,6 +13,7 @@ public class Tests extends BaseTests {
     private LoginPage loginPage;
     private SecureAreaPage secureAreaPage;
     private CheckboxPages checkboxPages;
+    private AlertsPage alertsPage;
 
 
     @BeforeMethod
@@ -24,6 +22,7 @@ public class Tests extends BaseTests {
         loginPage = pages.getLoginPage();
         secureAreaPage = pages.getSecureAreaPage();
         checkboxPages = pages.getCheckboxPages();
+        alertsPage = pages.getAlertsPage();
     }
 
 
@@ -49,6 +48,40 @@ public class Tests extends BaseTests {
         checkboxPages.iUnheckCheckboxes();
         System.out.println("The checkboxes are deselect!");
     }
+
+    @Test(priority = 6)
+    public void testAlerts(){
+        alertsPage
+                    .open()
+                    .triggerAlert();
+        assertTrue(alertsPage.getResult().contains("You successfuly clicked an alert"), "Alert text is incorrect!");
+        System.out.println("Press OK! on JS Alert button");
+
+        alertsPage
+                .open()
+                .acceptTriggerConfirm();
+        assertTrue(alertsPage.getResult().contains("You clicked: Ok"), "Alert text is incorrect!");
+        System.out.println("Press OK! on JS Alert button");
+
+        alertsPage
+                .open()
+                .dismissTriggerConfirm();
+        assertTrue(alertsPage.getResult().contains("You clicked: Cancel"), "Alert text is incorrect!");
+        System.out.println("Press Cancel! on JS Alert button");
+
+        alertsPage
+                .open()
+                .acceptTriggerPromptButton("Basina");
+        assertTrue(alertsPage.getResult().contains("You entered: Basina"), "Alert text is incorrect!");
+        System.out.println("Press OK! on JS Prompt button");
+
+        alertsPage
+                .open()
+                .dismissTriggerPromptButton("Basina");
+        assertTrue(alertsPage.getResult().contains("You entered: null"), "Alert text is incorrect!");
+        System.out.println("Press Cancel! on JS Prompt button");
+    }
+
 /*
 
     @Test(priority = 8)

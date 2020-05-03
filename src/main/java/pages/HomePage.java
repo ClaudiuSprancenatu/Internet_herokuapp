@@ -22,4 +22,9 @@ public class HomePage {
         return new LoginPage(driver);
     }
 
+    public AlertsPage clickJavaScriptAlerts(){
+        driver.clickLink("JavaScript Alerts");
+        return new AlertsPage(driver);
+    }
+
 }
