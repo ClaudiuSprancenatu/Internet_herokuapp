@@ -61,13 +61,13 @@ public class Tests extends BaseTests {
                 .open()
                 .acceptTriggerConfirm();
         assertTrue(alertsPage.getResult().contains("You clicked: Ok"), "Alert text is incorrect!");
-        System.out.println("Press OK! on JS Alert button");
+        System.out.println("Press OK! on JS Confirm button");
 
         alertsPage
                 .open()
                 .dismissTriggerConfirm();
         assertTrue(alertsPage.getResult().contains("You clicked: Cancel"), "Alert text is incorrect!");
-        System.out.println("Press Cancel! on JS Alert button");
+        System.out.println("Press Cancel! on JS Confirm button");
 
         alertsPage
                 .open()
