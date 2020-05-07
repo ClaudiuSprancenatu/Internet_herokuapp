@@ -152,7 +152,8 @@ public class BasePage {
         return driver.switchTo().alert().getText();
     }
 
-    public void frame(String text){
+    public void frame(Integer i, String text){
+        driver.switchTo().frame(i);
         driver.switchTo().frame(text);
     }
 

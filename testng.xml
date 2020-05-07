@@ -11,6 +11,7 @@
                     <include name="UnsuccessfulLogin"/>
                     <include name="SuccessfulLogin"/>
                     <include name="testAlerts"/>
+                    <include name="testiFrame"/>
                 </methods>
             </class>
         </classes>

@@ -18,7 +18,9 @@ public class FramePage {
     }
 
     public void frameIdentifier(){
-        browser.frame("frame-left");
+        browser.waitForThePageToBeLoaded();
+        browser.frame(0, "frame-left");
+        //browser.frame("frame-left");
 
     }
 
