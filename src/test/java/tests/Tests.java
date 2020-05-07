@@ -14,6 +14,7 @@ public class Tests extends BaseTests {
     private SecureAreaPage secureAreaPage;
     private CheckboxPages checkboxPages;
     private AlertsPage alertsPage;
+    private FramePage framePage;
 
 
     @BeforeMethod
@@ -23,6 +24,7 @@ public class Tests extends BaseTests {
         secureAreaPage = pages.getSecureAreaPage();
         checkboxPages = pages.getCheckboxPages();
         alertsPage = pages.getAlertsPage();
+        framePage = pages.getIframePage();
     }
 
 
@@ -82,19 +84,14 @@ public class Tests extends BaseTests {
         System.out.println("Press Cancel! on JS Prompt button");
     }
 
-/*
-
-    @Test(priority = 8)
-    public void testSuccessfullyLogin() {
-        loginPage
+    @Test(priority = 7)
+    public void testiFrame(){
+        framePage
                 .open()
-                .LoginFrom("tomsmith", "SuperSecretPassword!");
-        assertTrue(secureAreaPage.getLoginStatus().contains("You logged into a secure area!"), "Alert text is incorrect!");
-        System.out.println("Successfully Login test is done!");
-        loginPage.iLogout();
-        assertTrue(secureAreaPage.getLoginStatus().contains("You logged out of the secure area!"), "Alert text is incorrect!");
-        System.out.println("Logout test is done!");
-    }*/
+                .frameIdentifier();
+        assertTrue(framePage.frameMessage().contains("LEFT"), "Frame message is incorrect!");
+        System.out.println("The test is done!");
+    }
 
     @Test(dataProvider = "SuccessfulLogin", dataProviderClass = CustomerDataProvider.class, priority = 1)
     public void SuccessfulLogin(String email, String pass){
@@ -123,33 +120,4 @@ public class Tests extends BaseTests {
         System.out.println("Unsuccessfully Login test is done!");
 
     }
-
-
-/*
-    @Test(priority = 2)
-    public void testInvalidUsername() {
-        loginPage
-                .open()
-                .LoginFrom("sprancenatuc@yahoo.com", "SuperSecretPassword!");
-        assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
-        System.out.println("Unsuccessfully Login test is done!");
-    }
-
-    @Test(priority = 3)
-    public void testInvalidPassword() {
-        loginPage
-                .open()
-                .LoginFrom("tomsmith", "12345");
-        assertTrue(secureAreaPage.getLoginStatus().contains("Your password is invalid!"), "Alert text is incorrect!");
-        System.out.println("Unsuccessfully Login test is done!");
-    }
-
-    @Test(priority = 4)
-    public void testEmptyForm() {
-        loginPage
-                .open()
-                .LoginFrom("", "");
-        assertTrue(secureAreaPage.getLoginStatus().contains("Your username is invalid!"), "Alert text is incorrect!");
-        System.out.println("Unsuccessfully Login test is done!");
-    }*/
 }

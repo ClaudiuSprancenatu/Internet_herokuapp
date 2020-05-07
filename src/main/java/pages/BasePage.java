@@ -152,6 +152,10 @@ public class BasePage {
         return driver.switchTo().alert().getText();
     }
 
+    public void frame(String text){
+        driver.switchTo().frame(text);
+    }
+
     // WAITS METHODS
 
     public void waitForThePageToBeLoaded() {

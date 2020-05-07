@@ -27,4 +27,9 @@ public class HomePage {
         return new AlertsPage(driver);
     }
 
+    public FramePage clickFrame(){
+        driver.clickLink("Frames");
+        return new FramePage(driver);
+    }
+
 }

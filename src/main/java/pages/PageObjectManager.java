@@ -11,6 +11,7 @@ public class PageObjectManager {
     private SecureAreaPage secureAreaPage;
     private CheckboxPages checkboxPages;
     private AlertsPage alertsPage;
+    private FramePage framePage;
 
     public PageObjectManager(WebDriver driver){
         basePage = new BasePage(driver);
@@ -39,6 +40,10 @@ public class PageObjectManager {
 
     public AlertsPage getAlertsPage(){
         return (alertsPage == null) ? alertsPage = new AlertsPage(basePage) : alertsPage;
+    }
+
+    public FramePage getIframePage(){
+        return (framePage == null) ? framePage = new FramePage(basePage): framePage;
     }
 
 }
