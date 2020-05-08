@@ -88,9 +88,27 @@ public class Tests extends BaseTests {
     public void testiFrame(){
         framePage
                 .open()
-                .frameIdentifier();
+                .frameTopIdentifier("frame-top", "frame-left");
         assertTrue(framePage.frameMessage().contains("LEFT"), "Frame message is incorrect!");
-        System.out.println("The test is done!");
+        System.out.println("The LEFT test is done!");
+
+        framePage
+                .open()
+                .frameTopIdentifier("frame-top", "frame-middle");
+        assertTrue(framePage.frameMessage().contains("MIDDLE"), "Frame message is incorrect!");
+        System.out.println("The MIDDLE test is done!");
+
+        framePage
+                .open()
+                .frameTopIdentifier("frame-top", "frame-right");
+        assertTrue(framePage.frameMessage().contains("RIGHT"), "Frame message is incorrect!");
+        System.out.println("The RIGHT test is done!");
+
+        framePage
+                .open()
+                .frameBottomIdentifier("frame-bottom");
+        assertTrue(framePage.frameMessage().contains("BOTTOM"), "Frame message is incorrect!");
+        System.out.println("The BOTTOM test is done!");
     }
 
     @Test(dataProvider = "SuccessfulLogin", dataProviderClass = CustomerDataProvider.class, priority = 1)

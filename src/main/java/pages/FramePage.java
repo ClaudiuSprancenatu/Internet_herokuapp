@@ -17,10 +17,14 @@ public class FramePage {
         return this;
     }
 
-    public void frameIdentifier(){
+    public void frameTopIdentifier(String text1, String text2){
         browser.waitForThePageToBeLoaded();
-        browser.frame( "frame-top", "frame-left");
+        browser.frameTop( text1, text2);
+    }
 
+    public void frameBottomIdentifier(String text){
+        browser.waitForThePageToBeLoaded();
+        browser.frameBottom(text);
     }
 
     public String frameMessage(){
