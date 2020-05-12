@@ -15,6 +15,7 @@ public class Tests extends BaseTests {
     private CheckboxPages checkboxPages;
     private AlertsPage alertsPage;
     private FramePage framePage;
+    private DropdownPage dropdownPage;
 
 
     @BeforeMethod
@@ -25,6 +26,7 @@ public class Tests extends BaseTests {
         checkboxPages = pages.getCheckboxPages();
         alertsPage = pages.getAlertsPage();
         framePage = pages.getIframePage();
+        dropdownPage = pages.getDropdownPage();
     }
 
 
@@ -109,6 +111,15 @@ public class Tests extends BaseTests {
                 .frameBottomIdentifier("frame-bottom");
         assertTrue(framePage.frameMessage().contains("BOTTOM"), "Frame message is incorrect!");
         System.out.println("The BOTTOM test is done!");
+    }
+
+    @Test(priority = 8)
+    public void testDropdown(){
+        dropdownPage
+                .open()
+                .SelectDropdown();
+        //assertTrue();
+
     }
 
     @Test(dataProvider = "SuccessfulLogin", dataProviderClass = CustomerDataProvider.class, priority = 1)

@@ -12,6 +12,7 @@ public class PageObjectManager {
     private CheckboxPages checkboxPages;
     private AlertsPage alertsPage;
     private FramePage framePage;
+    private DropdownPage dropdownPage;
 
     public PageObjectManager(WebDriver driver){
         basePage = new BasePage(driver);
@@ -44,6 +45,10 @@ public class PageObjectManager {
 
     public FramePage getIframePage(){
         return (framePage == null) ? framePage = new FramePage(basePage): framePage;
+    }
+
+    public DropdownPage getDropdownPage(){
+        return (dropdownPage == null) ? dropdownPage = new DropdownPage(basePage): dropdownPage;
     }
 
 }

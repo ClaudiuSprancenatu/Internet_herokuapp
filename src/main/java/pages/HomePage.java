@@ -32,4 +32,9 @@ public class HomePage {
         return new FramePage(driver);
     }
 
+    public DropdownPage clickDropdown(){
+        driver.clickLink("Dropdown");
+        return new DropdownPage(driver);
+    }
+
 }

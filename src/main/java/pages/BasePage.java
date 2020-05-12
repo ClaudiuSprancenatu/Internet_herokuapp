@@ -1,13 +1,12 @@
 package pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BasePage {
 
@@ -159,6 +158,20 @@ public class BasePage {
 
     public void frameBottom(String text){
         driver.switchTo().frame(text);
+    }
+
+    public List<String> getSelectDropdown(By selector){
+        Select findDropdownElement = new Select(driver.findElement(selector));
+
+        List<WebElement> selectedElements = findDropdownElement.getOptions();
+        int Initialize = selectedElements.size();
+
+        for(int i=0; i<Initialize; i++) {
+            String Option = findDropdownElement.getOptions().get(i).getText();
+            System.out.println("The options from dropdown are:" + Option);
+        }
+
+        return null;
     }
 
     // WAITS METHODS
