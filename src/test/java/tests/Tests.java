@@ -116,10 +116,9 @@ public class Tests extends BaseTests {
     @Test(priority = 8)
     public void testDropdown(){
         dropdownPage
-                .open()
-                .SelectDropdown();
-        //assertTrue();
-
+                .open();
+        assertTrue(dropdownPage.getDropdown("Option 2").contains("Option 2"), "Incorrect option!");
+        //System.out.println("The dropdown test is done!" + dropdownPage.getMessageDropdown());
     }
 
     @Test(dataProvider = "SuccessfulLogin", dataProviderClass = CustomerDataProvider.class, priority = 1)

@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DropdownPage {
     private BasePage browser;
@@ -20,6 +21,11 @@ public class DropdownPage {
     public DropdownPage open (){
         browser.visit("/dropdown");
         return this;
+    }
+
+    public String getDropdown(String text){
+       browser.getSelectDropdown(dropdown).selectByVisibleText(text);
+        return null;
     }
 
 

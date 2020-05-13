@@ -160,19 +160,13 @@ public class BasePage {
         driver.switchTo().frame(text);
     }
 
-    public List<String> getSelectDropdown(By selector){
-        Select findDropdownElement = new Select(driver.findElement(selector));
+    public Select getSelectDropdown(By selector){
+        return new Select(driver.findElement(selector));
 
-        List<WebElement> selectedElements = findDropdownElement.getOptions();
-        int Initialize = selectedElements.size();
-
-        for(int i=0; i<Initialize; i++) {
-            String Option = findDropdownElement.getOptions().get(i).getText();
-            System.out.println("The options from dropdown are:" + Option);
-        }
-
-        return null;
     }
+
+
+
 
     // WAITS METHODS
 
