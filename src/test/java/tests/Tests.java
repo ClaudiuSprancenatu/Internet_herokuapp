@@ -116,8 +116,11 @@ public class Tests extends BaseTests {
     @Test(priority = 8)
     public void testDropdown(){
         dropdownPage
-                .open();
-        assertTrue(dropdownPage.getDropdown("Option 2").contains("Option 2"), "Incorrect option!");
+                .open()
+                .getDropdown("Option 2");
+        assertTrue(
+                dropdownPage.getOption()
+                        .contains("Option 2"), "Incorrect option!");
         //System.out.println("The dropdown test is done!" + dropdownPage.getMessageDropdown());
     }
 

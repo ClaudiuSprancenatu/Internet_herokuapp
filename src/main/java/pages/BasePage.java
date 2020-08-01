@@ -165,9 +165,7 @@ public class BasePage {
 
     }
 
-
-
-
+    
     // WAITS METHODS
 
     public void waitForThePageToBeLoaded() {
